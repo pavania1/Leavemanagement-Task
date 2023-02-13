@@ -34,7 +34,8 @@ const Admincollection = "Admin"
 
 func init() {
 	mongoCtx = context.Background()
-	db, err := mongo.Connect(mongoCtx, options.Client().ApplyURI("mongodb://localhost:27017"))
+	db, err := mongo.Connect(mongoCtx, options.Client().ApplyURI("mongodb+srv://pavani:pavani@cluster0.hbymlps.mongodb.net/?retryWrites=true&w=majority"))
+	// db, err := mongo.Connect(mongoCtx, options.Client().ApplyURI("mongodb://localhost:27017"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -131,7 +132,7 @@ func main() {
 	r.HandleFunc("/addadmin", Addadmin).Methods("POST")
 	r.HandleFunc("/adminlogin", loginAdmin).Methods("POST")
 	fmt.Println("attempting to start the server")
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Fatal(http.ListenAndServe(":1234", r))
 }
 func printMessage(message string) {
 	fmt.Println("")
